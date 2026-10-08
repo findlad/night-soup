@@ -114,7 +114,7 @@ export default function Home() {
           <Box className="hero-copy">
             <Typography className="eyebrow">90s Alternative and beyond</Typography>
             <Typography component="h1" className="hero-title" sx={{fontSize: "5rem !important"}}>
-              Because soup of the day implies a darker, sexier, possibly saltier<br />
+              Because soup of the day implies a darker, sexier, possibly saltier, <br />
               <em>Soup of the Night!</em>
             </Typography>
             <Typography className="hero-deck">
