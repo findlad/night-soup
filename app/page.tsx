@@ -22,6 +22,8 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import { slideshowImages } from './slideshow-images.generated';
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
 const navItems = [
   { label: 'Music', href: '#music' },
   { label: 'About', href: '#about' },
@@ -129,7 +131,7 @@ export default function Home() {
             <div className="orbit orbit-one" />
             <div className="orbit orbit-two" />
             <Image
-              src="/Night_Soup.svg"
+              src={`${basePath}/Night_Soup.svg`}
               alt="Night Soup illustrated bowl and record logo"
               className="hero-logo"
               width={1254}
@@ -182,9 +184,9 @@ export default function Home() {
                   key={image.src}
                   aria-hidden={index !== slideIndex}
                 >
-                  <Image src={image.src} alt="" fill sizes="(max-width: 900px) 100vw, 1280px" className="slide-backdrop" />
+                  <Image src={`${basePath}${image.src}`} alt="" fill sizes="(max-width: 900px) 100vw, 1280px" className="slide-backdrop" />
                   <Image
-                    src={image.src}
+                    src={`${basePath}${image.src}`}
                     alt={index === slideIndex ? image.alt : ''}
                     fill
                     sizes="(max-width: 900px) 100vw, 1280px"
