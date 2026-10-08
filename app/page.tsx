@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import {
   Box,
@@ -17,6 +17,10 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import MusicNoteRoundedIcon from '@mui/icons-material/MusicNoteRounded';
+import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
+import { slideshowImages } from './slideshow-images.generated';
 
 const navItems = [
   { label: 'Music', href: '#music' },
@@ -44,6 +48,26 @@ const shows: Show[] = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [slideshowPlaying, setSlideshowPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!slideshowPlaying) return;
+
+    const timer = window.setInterval(() => {
+      setSlideIndex((current) => (current + 1) % slideshowImages.length);
+    }, 5000);
+
+    return () => window.clearInterval(timer);
+  }, [slideshowPlaying]);
+
+  const showPreviousSlide = () => {
+    setSlideIndex((current) => (current - 1 + slideshowImages.length) % slideshowImages.length);
+  };
+
+  const showNextSlide = () => {
+    setSlideIndex((current) => (current + 1) % slideshowImages.length);
+  };
 
   return (
     <Box component="main" className="site-shell">
@@ -144,17 +168,74 @@ export default function Home() {
       </Box>
 
       <Box component="section" id="about" className="section about-section">
-        <Container maxWidth="xl" className="about-grid">
-          <Box>
-            <Typography className="section-number">02 / THE BAND</Typography>
-            <Typography component="h2">Made for the<br />late shift.</Typography>
+        <Container maxWidth="xl" className="slideshow-wrap">
+          <Box
+            className="slideshow"
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Night Soup photos"
+          >
+            <Box className="slides" aria-live="polite">
+              {slideshowImages.map((image, index) => (
+                <Box
+                  className={`slide ${index === slideIndex ? 'active' : ''}`}
+                  key={image.src}
+                  aria-hidden={index !== slideIndex}
+                >
+                  <Image src={image.src} alt="" fill sizes="(max-width: 900px) 100vw, 1280px" className="slide-backdrop" />
+                  <Image
+                    src={image.src}
+                    alt={index === slideIndex ? image.alt : ''}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 1280px"
+                    className="slide-image"
+                  />
+                </Box>
+              ))}
+              <Typography className="slide-count" aria-hidden="true">
+                {String(slideIndex + 1).padStart(2, '0')} / {String(slideshowImages.length).padStart(2, '0')}
+              </Typography>
+              <Box className="slideshow-heading">
+                <Typography className="section-number">02 / THE BAND</Typography>
+                <Typography component="h2">Made for the<br />late shift.</Typography>
+              </Box>
+            </Box>
+            <Box className="slideshow-controls">
+              <Stack direction="row" spacing={1}>
+                <IconButton className="slide-button" onClick={showPreviousSlide} aria-label="Previous photo">
+                  <ArrowBackRoundedIcon />
+                </IconButton>
+                <IconButton className="slide-button" onClick={showNextSlide} aria-label="Next photo">
+                  <ArrowForwardRoundedIcon />
+                </IconButton>
+                <IconButton
+                  className="slide-button"
+                  onClick={() => setSlideshowPlaying((playing) => !playing)}
+                  aria-label={slideshowPlaying ? 'Pause slideshow' : 'Play slideshow'}
+                >
+                  {slideshowPlaying ? <PauseRoundedIcon /> : <PlayArrowRoundedIcon />}
+                </IconButton>
+              </Stack>
+              <Box className="slide-dots" aria-label="Choose a photo">
+                {slideshowImages.map((image, index) => (
+                  <button
+                    type="button"
+                    key={image.src}
+                    className={index === slideIndex ? 'active' : ''}
+                    onClick={() => setSlideIndex(index)}
+                    aria-label={`Show photo ${index + 1}`}
+                    aria-current={index === slideIndex ? 'true' : undefined}
+                  />
+                ))}
+              </Box>
+            </Box>
           </Box>
-          <Box className="about-copy">
+          <Box className="about-copy about-copy-below">
             <Typography className="about-lead">
               Night Soup lives where the 90s alternative is stripped down, simmered, and served hot.
             </Typography>
             <Typography>
-           Evan Rothery. Duncan Findlay. Other ingredients. Mostly acoustic. Songs you have forgotten that you love. Innovative covers. Artful selections. Original tunes. Play along. Sing along. Drum along. 
+              Evan Rothery. Duncan Findlay. Other ingredients. Mostly acoustic. Songs you have forgotten that you love. Innovative covers. Artful selections. Original tunes. Play along. Sing along. Drum along.
             </Typography>
             <div className="ingredient-line"><span /> Best served quiet</div>
           </Box>

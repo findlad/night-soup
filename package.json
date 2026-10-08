@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/generate-slideshow.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/generate-slideshow.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
