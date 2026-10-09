@@ -43,6 +43,8 @@ a { color: inherit; }
 .hero-actions .MuiButton-contained:hover { background: #ff713a; }
 .hero-actions .MuiButton-outlined { border-color: rgba(252,229,186,.55); color: var(--cream); }
 .hero-actions .MuiButton-outlined:hover { border-color: var(--cream); background: rgba(252,229,186,.06); }
+.hero-actions .booking-button { border-color: var(--orange); color: var(--orange); }
+.hero-actions .booking-button:hover { border-color: #ff713a; background: rgba(238,87,29,.1); }
 .logo-stage { position: relative; display: grid; place-items: center; min-height: 620px; }
 .hero-logo { position: relative; z-index: 2; display: block; width: min(100%, 560px); height: auto; filter: drop-shadow(0 28px 60px rgba(0,0,0,.5)); animation: float 6s ease-in-out infinite; }
 .orbit { position: absolute; border: 1px solid rgba(72,148,132,.38); border-radius: 50%; }
@@ -122,6 +124,10 @@ a { color: inherit; }
 .footer .section-number { color: var(--ink); opacity: .65; }
 .footer-main { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 18px 0 80px; }
 .footer-main h2 { margin: 0; }
+.footer-contact-block { display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
+.footer-booking-copy { max-width: 480px; color: var(--ink); font-size: clamp(1.15rem, 2vw, 1.5rem) !important; font-weight: 700 !important; text-align: right; }
+.footer-email { color: var(--ink) !important; font-weight: 900 !important; text-decoration-thickness: 2px !important; text-underline-offset: 4px; }
+.footer-email:hover { text-decoration-color: var(--cream) !important; }
 .social-button { width: 54px; height: 54px; border: 1px solid rgba(7,9,8,.55) !important; color: var(--ink) !important; }
 .social-button:hover { background: var(--ink) !important; color: var(--cream) !important; }
 .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(7,9,8,.4); display: flex; justify-content: space-between; }
@@ -195,5 +201,7 @@ a { color: inherit; }
   .city-wrap { justify-self: start; margin-top: 6px; }
   .show-address { right: auto; left: 0; }
   .footer-main { padding-bottom: 64px; }
+  .footer-contact-block { align-items: flex-start; }
+  .footer-booking-copy { text-align: left; }
   .footer-bottom { gap: 18px; flex-direction: column; }
 }

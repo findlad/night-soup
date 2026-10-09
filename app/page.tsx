@@ -20,9 +20,11 @@ import MusicNoteRoundedIcon from '@mui/icons-material/MusicNoteRounded';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
+import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import { slideshowImages } from './slideshow-images.generated';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const bookingEmailHref = "mailto:hello@nightsoup.ca?subject=Booking%20Night%20Soup&body=Hi%20Night%20Soup%2C%0D%0A%0D%0AI'd%20like%20to%20book%20you%20for%3A%0D%0A%0D%0ADate%3A%0D%0AVenue%3A%0D%0ACity%3A%0D%0A%0D%0AThanks!";
 
 const navItems = [
   { label: 'Music', href: '#music' },
@@ -125,6 +127,14 @@ export default function Home() {
                 Hear the music
               </Button>
               <Button variant="outlined" href="#shows">Live dates</Button>
+              <Button
+                variant="outlined"
+                href={bookingEmailHref}
+                startIcon={<MailOutlineRoundedIcon />}
+                className="booking-button"
+              >
+                Book Night Soup
+              </Button>
             </Stack>
           </Box>
           <Box className="logo-stage">
@@ -290,10 +300,20 @@ export default function Home() {
           <Typography className="section-number">04 / KEEP IN TOUCH</Typography>
           <Box className="footer-main">
             <Typography component="h2">Stay up late.</Typography>
-            <Stack direction="row" spacing={1.5}>
-              <IconButton aria-label="Instagram link coming soon" className="social-button"><InstagramIcon /></IconButton>
-              <IconButton aria-label="Music links coming soon" className="social-button"><MusicNoteRoundedIcon /></IconButton>
-            </Stack>
+            <Box className="footer-contact-block">
+              <Typography className="footer-booking-copy">
+                Email{' '}
+                <Link href={bookingEmailHref} className="footer-email">
+                  hello@nightsoup.ca
+                </Link>
+              </Typography>
+              
+              {/* When we get socials, they go here
+              <Stack direction="row" spacing={1.5}>
+                <IconButton aria-label="Instagram link coming soon" className="social-button"><InstagramIcon /></IconButton>
+                <IconButton aria-label="Music links coming soon" className="social-button"><MusicNoteRoundedIcon /></IconButton>
+              </Stack> */}
+            </Box>
           </Box>
           <Box className="footer-bottom">
             <Typography>© {new Date().getFullYear()} Night Soup</Typography>
