@@ -133,7 +133,21 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+
+  /* Keep the site usable on phones that expose the OS animation setting as
+     `prefers-reduced-motion`. The previous universal rule collapsed every
+     animation to a single frame, including the carousel fade. */
+  .hero-logo { animation-name: float-reduced; animation-duration: 10s; }
+  .orbit-one { animation-duration: 56s; }
+  .orbit-two { animation-duration: 68s; }
+  .ticker div { animation-duration: 48s; }
+  .record-disc { animation-duration: 32s; }
+  .slide { transition-duration: .2s; }
+}
+
+@keyframes float-reduced {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
 @media (max-width: 900px) {
