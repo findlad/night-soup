@@ -3,7 +3,7 @@ import { ThemeRegistry } from './theme-registry';
 import './globals.css';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-const siteUrl = 'https://findlad.github.io/night-soup';
+const siteUrl = 'https://nightsoup.ca';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
