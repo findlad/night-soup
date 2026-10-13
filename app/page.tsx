@@ -42,12 +42,12 @@ type Show = {
 
 // Add shows here. Leave the array empty to display the current "quiet—for now" message.
 const shows: Show[] = [
-  // {
-  //   date: 'Sept 4th 2026',
-  //   venue: "Pat's Patio",
-  //   address: '2345 Whatever St, Calgary',
-  //   city: 'Calgary',
-  // },
+  {
+    date: 'January 2027',
+    venue: "Congress Coffee Company",
+    address: '215 36 Ave NE #1A, Calgary, AB T2E 2L4',
+    city: 'Calgary',
+  },
 ];
 
 export default function Home() {
@@ -114,7 +114,7 @@ export default function Home() {
         <div className="hero-glow" />
         <Container maxWidth="xl" className="hero-grid">
           <Box className="hero-copy">
-            <Typography className="eyebrow">90s Alternative and beyond</Typography>
+            <Typography className="eyebrow">90`s Alternative and beyond</Typography>
             <Typography component="h1" className="hero-title">
               Because soup of the day implies a darker, sexier, possibly saltier, <br />
               <em>Soup of the Night!</em>
@@ -247,7 +247,7 @@ export default function Home() {
               Night Soup lives where the 90s alternative is stripped down, simmered, and served hot.
             </Typography>
             <Typography>
-              Evan Rothery. Duncan Findlay. Other ingredients. Mostly acoustic. Songs you have forgotten that you love. Innovative covers. Artful selections. Original tunes. Play along. Sing along. Drum along.
+              Evan Rothery. Duncan Findlay. Guest ingredients. Mostly acoustic. Songs you have forgotten that you love. Innovative covers. Artful selections. Original tunes. Play along. Sing along. Drum along.
             </Typography>
             <div className="ingredient-line"><span /> Best served quiet</div>
           </Box>
