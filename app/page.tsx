@@ -43,7 +43,7 @@ type Show = {
 // Add shows here. Leave the array empty to display the current "quiet—for now" message.
 const shows: Show[] = [
   {
-    date: 'January 2027',
+    date: '16th January 2027',
     venue: "Congress Coffee Company",
     address: '215 36 Ave NE #1A, Calgary, AB T2E 2L4',
     city: 'Calgary',
@@ -169,7 +169,7 @@ export default function Home() {
               <Typography className="release-type">NEXT SERVING</Typography>
               <Typography component="h3">Something is simmering.</Typography>
               <Typography>
-                New music is on the way. 
+                New music is on the way.
               </Typography>
               <Button variant="contained" startIcon={<MusicNoteRoundedIcon />} disabled className="soon-button">
                 Streaming links coming soon
@@ -307,7 +307,7 @@ export default function Home() {
                   hello@nightsoup.ca
                 </Link>
               </Typography>
-              
+
               {/* When we get socials, they go here
               <Stack direction="row" spacing={1.5}>
                 <IconButton aria-label="Instagram link coming soon" className="social-button"><InstagramIcon /></IconButton>
