@@ -73,6 +73,24 @@ a { color: inherit; }
 .record-copy > p { max-width: 580px; color: #dce7e2; font-size: 1.06rem; line-height: 1.7; }
 .soon-button { align-self: flex-start; margin-top: 30px !important; }
 .soon-button.Mui-disabled { color: rgba(7,9,8,.6) !important; background: rgba(252,229,186,.7) !important; }
+.kitchen-video-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(300px, .55fr); min-height: 540px; background: var(--teal); color: var(--cream); box-shadow: 18px 18px 0 var(--orange); }
+.kitchen-player-column { min-width: 0; display: flex; flex-direction: column; }
+.kitchen-player { position: relative; aspect-ratio: 16 / 9; min-height: 0; overflow: hidden; background: #020302; }
+.kitchen-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.kitchen-now-playing { flex: 1; padding: 28px 34px 34px; background: var(--ink); }
+.kitchen-now-playing .release-type { color: var(--orange); opacity: 1; }
+.kitchen-now-playing h3 { margin: 10px 0 0; color: var(--cream); font-size: clamp(1.7rem, 3vw, 2.8rem); line-height: 1.05; letter-spacing: -.045em; }
+.kitchen-playlist { border-left: 1px solid rgba(252,229,186,.28); }
+.kitchen-playlist-label { padding: 25px 26px; border-bottom: 1px solid rgba(252,229,186,.28); color: rgba(252,229,186,.72); font-weight: 800 !important; font-size: .75rem !important; letter-spacing: .16em !important; text-transform: uppercase; }
+.kitchen-video-item { width: 100%; min-height: 96px; display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; column-gap: 10px; padding: 20px 24px; border: 0; border-bottom: 1px solid rgba(252,229,186,.22); background: transparent; color: var(--cream); font: inherit; text-align: left; cursor: pointer; transition: background .2s ease, color .2s ease; }
+.kitchen-video-item:hover { background: rgba(7,9,8,.18); }
+.kitchen-video-item.active { background: var(--orange); color: var(--ink); }
+.kitchen-video-item:focus-visible { position: relative; z-index: 1; outline: 3px solid var(--ink); outline-offset: -6px; }
+.kitchen-video-number { grid-row: 1 / span 2; align-self: start; padding-top: 4px; opacity: .64; font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
+.kitchen-video-name { align-self: end; font-family: var(--font-display); font-size: clamp(1rem, 1.5vw, 1.3rem); line-height: 1.12; letter-spacing: -.025em; }
+.kitchen-video-status { align-self: start; margin-top: 9px; display: flex; align-items: center; gap: 5px; opacity: .68; font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.kitchen-video-status svg { width: 16px; height: 16px; }
+.kitchen-video-item.active .kitchen-video-status { opacity: 1; }
 
 .about-section { position: relative; background: var(--ink); }
 .about-section::after { content: 'NIGHT / SOUP'; position: absolute; right: -1vw; bottom: 0; color: rgba(62,124,112,.1); font: clamp(4rem, 11vw, 11rem)/.8 var(--font-display); letter-spacing: -.08em; pointer-events: none; }
@@ -167,8 +185,9 @@ a { color: inherit; }
   .orbit-one { width: min(82vw, 500px); height: min(82vw, 500px); }
   .orbit-two { width: min(66vw, 400px); height: min(66vw, 400px); }
   .logo-caption { right: 12%; bottom: 6%; }
-  .record-card, .about-grid { grid-template-columns: 1fr; }
+  .record-card, .about-grid, .kitchen-video-layout { grid-template-columns: 1fr; }
   .record-copy { min-height: 440px; }
+  .kitchen-playlist { border-top: 1px solid rgba(252,229,186,.28); border-left: 0; }
   .about-copy { padding-top: 0; }
   .slideshow-wrap { grid-template-columns: 1fr; gap: 64px; }
 }
@@ -185,8 +204,11 @@ a { color: inherit; }
   .section { padding: 82px 0; }
   .section-heading, .split-heading, .empty-show, .footer-main { align-items: flex-start; flex-direction: column; }
   .record-card { box-shadow: 9px 9px 0 var(--orange); }
+  .kitchen-video-layout { box-shadow: 9px 9px 0 var(--orange); }
   .record-art { min-height: 350px; }
   .record-copy { min-height: 390px; padding: 38px 28px; }
+  .kitchen-now-playing { padding: 22px 24px 26px; }
+  .kitchen-video-item { min-height: 84px; padding: 17px 20px; }
   .about-section::after { display: none; }
   .slides { min-height: 390px; aspect-ratio: 4 / 5; box-shadow: 9px 9px 0 var(--teal); }
   .slideshow-heading { left: 22px; bottom: 26px; }

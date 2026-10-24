@@ -10,12 +10,20 @@ export const slideshowImages = [
     "alt": "Evan relaxing in an oversized red chair at night"
   },
   {
+    "src": "/slideshow/fistBump.png",
+    "alt": "Night Soup — fist Bump"
+  },
+  {
     "src": "/slideshow/IMG_20261008_155512.jpg",
     "alt": "Night Soup — IMG 20261008 155512"
   },
   {
     "src": "/slideshow/patioWide.jpg",
     "alt": "Night Soup playing an outdoor patio show under string lights"
+  },
+  {
+    "src": "/slideshow/patsIncursion.png",
+    "alt": "Night Soup — pats Incursion"
   },
   {
     "src": "/slideshow/PXL_20260111_211829539.MP.jpg",

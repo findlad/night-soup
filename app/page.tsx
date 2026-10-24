@@ -15,13 +15,13 @@ import {
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import MusicNoteRoundedIcon from '@mui/icons-material/MusicNoteRounded';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import { slideshowImages } from './slideshow-images.generated';
+import { kitchenVideos } from './kitchen-videos';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const bookingEmailHref = "mailto:hello@nightsoup.ca?subject=Booking%20Night%20Soup&body=Hi%20Night%20Soup%2C%0D%0A%0D%0AI'd%20like%20to%20book%20you%20for%3A%0D%0A%0D%0ADate%3A%0D%0AVenue%3A%0D%0ACity%3A%0D%0A%0D%0AThanks!";
@@ -32,6 +32,33 @@ const navItems = [
   { label: 'Shows', href: '#shows' },
   { label: 'Contact', href: '#contact' },
 ];
+
+function getYouTubeVideoId(youtubeUrl: string) {
+  try {
+    const url = new URL(youtubeUrl);
+    const hostname = url.hostname.replace(/^www\./, '');
+
+    if (hostname === 'youtu.be') {
+      return url.pathname.split('/').filter(Boolean)[0] ?? null;
+    }
+
+    if (hostname === 'youtube.com' || hostname === 'm.youtube.com') {
+      if (url.pathname === '/watch') return url.searchParams.get('v');
+
+      const [route, videoId] = url.pathname.split('/').filter(Boolean);
+      if (['embed', 'shorts', 'live'].includes(route)) return videoId ?? null;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+const playableKitchenVideos = kitchenVideos.flatMap((video) => {
+  const videoId = getYouTubeVideoId(video.youtubeUrl);
+  return videoId ? [{ ...video, videoId }] : [];
+});
 
 type Show = {
   date: string;
@@ -54,6 +81,9 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const [slideshowPlaying, setSlideshowPlaying] = useState(true);
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
+
+  const selectedVideo = playableKitchenVideos[selectedVideoIndex];
 
   useEffect(() => {
     if (!slideshowPlaying) return;
@@ -161,21 +191,68 @@ export default function Home() {
             <Typography className="section-number">01 / MUSIC</Typography>
             <Typography component="h2">From the kitchen</Typography>
           </Box>
-          <Box className="record-card">
-            <Box className="record-art" aria-hidden="true">
-              <div className="record-disc"><div className="record-label">NS</div></div>
+          {selectedVideo ? (
+            <Box className="kitchen-video-layout">
+              <Box className="kitchen-player-column">
+                <Box className="kitchen-player">
+                  <iframe
+                    key={selectedVideo.videoId}
+                    src={`https://www.youtube-nocookie.com/embed/${selectedVideo.videoId}?rel=0`}
+                    title={selectedVideo.displayName}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </Box>
+                <Box className="kitchen-now-playing" aria-live="polite">
+                  <Typography className="release-type">NOW PLAYING</Typography>
+                  <Typography component="h3">{selectedVideo.displayName}</Typography>
+                </Box>
+              </Box>
+
+              <Box className="kitchen-playlist" aria-label="From the Kitchen videos">
+                <Typography className="kitchen-playlist-label">
+                  Select a serving
+                </Typography>
+                {playableKitchenVideos.map((video, index) => {
+                  const isSelected = index === selectedVideoIndex;
+
+                  return (
+                    <button
+                      type="button"
+                      className={`kitchen-video-item ${isSelected ? 'active' : ''}`}
+                      key={`${video.videoId}-${video.displayName}`}
+                      onClick={() => setSelectedVideoIndex(index)}
+                      aria-current={isSelected ? 'true' : undefined}
+                    >
+                      <span className="kitchen-video-number">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className="kitchen-video-name">{video.displayName}</span>
+                      <span className="kitchen-video-status" aria-hidden="true">
+                        <PlayArrowRoundedIcon />
+                        {isSelected ? 'Playing' : 'Play'}
+                      </span>
+                    </button>
+                  );
+                })}
+              </Box>
             </Box>
-            <Box className="record-copy">
-              <Typography className="release-type">NEXT SERVING</Typography>
-              <Typography component="h3">Something is simmering.</Typography>
-              <Typography>
-                New music is on the way.
-              </Typography>
-              <Button variant="contained" startIcon={<MusicNoteRoundedIcon />} disabled className="soon-button">
-                Streaming links coming soon
-              </Button>
+          ) : (
+            <Box className="record-card">
+              <Box className="record-art" aria-hidden="true">
+                <div className="record-disc"><div className="record-label">NS</div></div>
+              </Box>
+              <Box className="record-copy">
+                <Typography className="release-type">NEXT SERVING</Typography>
+                <Typography component="h3">Something is simmering.</Typography>
+                <Typography>Videos from the Night Soup kitchen are on the way.</Typography>
+                <Button variant="contained" startIcon={<MusicNoteRoundedIcon />} disabled className="soon-button">
+                  Videos coming soon
+                </Button>
+              </Box>
             </Box>
-          </Box>
+          )}
         </Container>
       </Box>
 
