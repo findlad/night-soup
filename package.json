@@ -28,7 +28,7 @@
     "@types/react-dom": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "firebase-tools": "^14.23.0",
+    "firebase-tools": "^15.34.1",
     "sharp": "latest",
     "typescript": "latest"
   }
