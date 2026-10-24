@@ -9,8 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "social-card": "node scripts/generate-social-card.mjs",
-    "deploy": "npm run build && firebase deploy --only hosting"
+    "social-card": "node scripts/generate-social-card.mjs"
   },
   "dependencies": {
     "@emotion/cache": "latest",
@@ -28,7 +27,6 @@
     "@types/react-dom": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "firebase-tools": "^15.34.1",
     "sharp": "latest",
     "typescript": "latest"
   }

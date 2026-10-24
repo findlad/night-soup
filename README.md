@@ -1,23 +1,47 @@
-# Night Soup website
+# Night Soup
 
-A static band website built with Next.js, Material UI, and Firebase Hosting.
+The official Night Soup band website. Built with Next.js and Material UI, exported as a static site, and hosted on GitHub Pages.
 
-## Run locally
+## Local development
+
+Install a current Node.js LTS release, then run:
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Customize
+Open [http://localhost:3000](http://localhost:3000).
 
-The main page content lives in `app/page.tsx`; the visual design and logo-derived palette live in `app/globals.css`. Replace the placeholder copy and inactive links as music, show dates, social accounts, and band details become available.
+## Updating the site
 
-## Deploy to Firebase Hosting
+| Content | Location |
+| --- | --- |
+| Kitchen videos | `app/kitchen-videos.ts` |
+| Shows | The `shows` array in `app/page.tsx` |
+| Band photos | `public/slideshow/` |
+| Page text and links | `app/page.tsx` |
+| Colours and layout | `app/globals.css` |
 
-1. Install dependencies with `npm install`.
-2. Sign in with `npx firebase login`.
-3. Connect the folder to your Firebase project with `npx firebase use --add`.
-4. Run `npm run deploy`.
+To add a video, add an entry to `app/kitchen-videos.ts`:
 
-The site exports to `out/`, which is already configured as the Firebase Hosting public directory.
+```ts
+{
+  displayName: 'Video title',
+  youtubeUrl: 'https://www.youtube.com/watch?v=VIDEO_ID',
+}
+```
+
+Standard YouTube, `youtu.be`, Shorts, and Live links are supported. Slideshow data is regenerated automatically when the development server or build runs.
+
+## Useful commands
+
+```bash
+npm run dev      # Start the local development server
+npm run lint     # Check the source code
+npm run build    # Create the static site in out/
+```
+
+## Deployment
+
+Pushing to the `main` branch automatically builds and deploys the site through the GitHub Actions workflow in `.github/workflows/deploy.yml`. A deployment can also be started manually from the repository's **Actions** tab.
