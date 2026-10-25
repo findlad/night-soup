@@ -2,6 +2,34 @@
 
 export const slideshowImages = [
   {
+    "src": "/slideshow/DSC00195.JPG",
+    "alt": "Night Soup — DSC00195"
+  },
+  {
+    "src": "/slideshow/DSC00198~2.JPG",
+    "alt": "Night Soup — DSC00198~2"
+  },
+  {
+    "src": "/slideshow/DSC00200~2.JPG",
+    "alt": "Night Soup — DSC00200~2"
+  },
+  {
+    "src": "/slideshow/DSC00201~2.JPG",
+    "alt": "Night Soup — DSC00201~2"
+  },
+  {
+    "src": "/slideshow/DSC00202~2.JPG",
+    "alt": "Night Soup — DSC00202~2"
+  },
+  {
+    "src": "/slideshow/DSC00204~2.JPG",
+    "alt": "Night Soup — DSC00204~2"
+  },
+  {
+    "src": "/slideshow/DSC00214~2.JPG",
+    "alt": "Night Soup — DSC00214~2"
+  },
+  {
     "src": "/slideshow/DuncanChair.jpg",
     "alt": "Duncan relaxing in an oversized red chair"
   },

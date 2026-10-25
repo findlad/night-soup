@@ -60,6 +60,17 @@ const playableKitchenVideos = kitchenVideos.flatMap((video) => {
   return videoId ? [{ ...video, videoId }] : [];
 });
 
+function shuffleSlideshowImages() {
+  const shuffledImages = [...slideshowImages];
+
+  for (let index = shuffledImages.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffledImages[index], shuffledImages[randomIndex]] = [shuffledImages[randomIndex], shuffledImages[index]];
+  }
+
+  return shuffledImages;
+}
+
 type Show = {
   date: string;
   venue: string;
@@ -80,27 +91,36 @@ const shows: Show[] = [
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [shuffledSlideshowImages, setShuffledSlideshowImages] = useState(() => [...slideshowImages]);
   const [slideshowPlaying, setSlideshowPlaying] = useState(true);
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
 
   const selectedVideo = playableKitchenVideos[selectedVideoIndex];
 
   useEffect(() => {
+    const shuffleTimer = window.setTimeout(() => {
+      setShuffledSlideshowImages(shuffleSlideshowImages());
+    }, 0);
+
+    return () => window.clearTimeout(shuffleTimer);
+  }, []);
+
+  useEffect(() => {
     if (!slideshowPlaying) return;
 
     const timer = window.setInterval(() => {
-      setSlideIndex((current) => (current + 1) % slideshowImages.length);
+      setSlideIndex((current) => (current + 1) % shuffledSlideshowImages.length);
     }, 5000);
 
     return () => window.clearInterval(timer);
-  }, [slideshowPlaying]);
+  }, [slideshowPlaying, shuffledSlideshowImages.length]);
 
   const showPreviousSlide = () => {
-    setSlideIndex((current) => (current - 1 + slideshowImages.length) % slideshowImages.length);
+    setSlideIndex((current) => (current - 1 + shuffledSlideshowImages.length) % shuffledSlideshowImages.length);
   };
 
   const showNextSlide = () => {
-    setSlideIndex((current) => (current + 1) % slideshowImages.length);
+    setSlideIndex((current) => (current + 1) % shuffledSlideshowImages.length);
   };
 
   return (
@@ -166,6 +186,7 @@ export default function Home() {
                 Book Night Soup
               </Button>
             </Stack>
+              <Typography sx= {{mt:2}} className="hero-deck"> or email hello@nightcoup.ca to book</Typography>
           </Box>
           <Box className="logo-stage">
             <div className="orbit orbit-one" />
@@ -265,7 +286,7 @@ export default function Home() {
             aria-label="Night Soup photos"
           >
             <Box className="slides" aria-live="polite">
-              {slideshowImages.map((image, index) => (
+              {shuffledSlideshowImages.map((image, index) => (
                 <Box
                   className={`slide ${index === slideIndex ? 'active' : ''}`}
                   key={image.src}
@@ -282,7 +303,7 @@ export default function Home() {
                 </Box>
               ))}
               <Typography className="slide-count" aria-hidden="true">
-                {String(slideIndex + 1).padStart(2, '0')} / {String(slideshowImages.length).padStart(2, '0')}
+                {String(slideIndex + 1).padStart(2, '0')} / {String(shuffledSlideshowImages.length).padStart(2, '0')}
               </Typography>
               <Box className="slideshow-heading">
                 <Typography className="section-number">02 / THE BAND</Typography>
@@ -306,7 +327,7 @@ export default function Home() {
                 </IconButton>
               </Stack>
               <Box className="slide-dots" aria-label="Choose a photo">
-                {slideshowImages.map((image, index) => (
+                {shuffledSlideshowImages.map((image, index) => (
                   <button
                     type="button"
                     key={image.src}
