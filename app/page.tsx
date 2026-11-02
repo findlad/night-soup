@@ -378,8 +378,8 @@ export default function Home() {
         )}
       </Dialog>
 
-      <Box component="section" id="music" className="section music-section">
-        <Container maxWidth="xl">
+      <Box component="section" className="section music-section">
+        <Container maxWidth="xl" id="music">
           <Box className="section-heading">
             <Typography className="section-number">01 / MUSIC</Typography>
             <Typography component="h2">From the kitchen</Typography>
@@ -449,8 +449,8 @@ export default function Home() {
         </Container>
       </Box>
 
-      <Box component="section" id="about" className="section about-section">
-        <Container maxWidth="xl" className="slideshow-wrap">
+      <Box component="section" className="section about-section">
+        <Container maxWidth="xl" id="about" className="slideshow-wrap">
           <Box
             className="slideshow"
             role="region"
@@ -524,8 +524,8 @@ export default function Home() {
         </Container>
       </Box>
 
-      <Box component="section" id="shows" className="section shows-section">
-        <Container maxWidth="xl">
+      <Box component="section" className="section shows-section">
+        <Container maxWidth="xl" id="shows">
           <Box className="section-heading split-heading">
             <Box>
               <Typography className="section-number">03 / SHOWS</Typography>
@@ -565,8 +565,8 @@ export default function Home() {
         </Container>
       </Box>
 
-      <Box component="footer" id="contact" className="footer">
-        <Container maxWidth="xl">
+      <Box component="footer" className="footer">
+        <Container maxWidth="xl" id="contact">
           <Typography className="section-number">04 / KEEP IN TOUCH</Typography>
           <Box className="footer-main">
             <Typography component="h2">Stay up late.</Typography>
