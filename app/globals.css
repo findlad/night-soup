@@ -45,6 +45,32 @@ a { color: inherit; }
 .hero-actions .MuiButton-outlined:hover { border-color: var(--cream); background: rgba(252,229,186,.06); }
 .hero-actions .booking-button { border-color: var(--orange); color: var(--orange); }
 .hero-actions .booking-button:hover { border-color: #ff713a; background: rgba(238,87,29,.1); }
+.booking-dialog-paper { overflow-y: auto !important; border: 1px solid rgba(252,229,186,.22); border-radius: 0 !important; background: var(--ink-soft) !important; color: var(--cream) !important; box-shadow: 12px 12px 0 var(--orange) !important; }
+.booking-dialog-title { position: relative; padding: 30px 72px 12px 32px !important; color: var(--cream); font: clamp(2rem, 6vw, 3.2rem)/1 var(--font-display) !important; letter-spacing: -.055em !important; }
+.booking-dialog-close { position: absolute !important; top: 22px; right: 22px; color: var(--cream) !important; }
+.booking-dialog-content { padding: 12px 32px 20px !important; }
+.booking-dialog-intro { max-width: 510px; margin-bottom: 24px !important; color: var(--muted); line-height: 1.6 !important; }
+.booking-dialog-content .MuiAlert-root { margin-bottom: 20px; }
+.booking-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.booking-details-field { grid-column: 1 / -1; }
+.booking-form .MuiInputBase-root { color: var(--cream); border-radius: 0; }
+.booking-form .MuiInputBase-input { color-scheme: dark; }
+.booking-form .MuiInputLabel-root { color: var(--muted); }
+.booking-form .MuiInputLabel-root.Mui-focused { color: var(--orange); }
+.booking-form .MuiOutlinedInput-notchedOutline { border-color: rgba(252,229,186,.38); }
+.booking-form .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline { border-color: var(--cream); }
+.booking-form .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline { border-color: var(--orange); }
+.booking-form .MuiInputBase-input::placeholder { color: var(--muted); opacity: .68; }
+.booking-dialog-actions { justify-content: space-between !important; gap: 20px; padding: 18px 32px 30px !important; }
+.booking-dialog-actions > p { color: var(--muted); font-size: .84rem; }
+.booking-dialog-actions a { color: var(--cream); font-weight: 700; text-underline-offset: 3px; }
+.booking-dialog-actions .MuiButton-contained { min-width: 160px; background: var(--orange); color: var(--ink); }
+.booking-dialog-actions .MuiButton-contained:hover { background: #ff713a; }
+.booking-dialog-actions .MuiButton-contained.Mui-disabled { background: rgba(238,87,29,.55); color: rgba(7,9,8,.7); }
+.booking-success { padding: 26px 32px 22px !important; }
+.booking-success + .booking-dialog-actions { justify-content: flex-end !important; }
+.booking-success h3 { margin: 0 0 16px; color: var(--orange); font: clamp(1.6rem, 4vw, 2.4rem)/1.1 var(--font-display); letter-spacing: -.04em; }
+.booking-success p { max-width: 500px; color: var(--muted); line-height: 1.7; }
 .logo-stage { position: relative; display: grid; place-items: center; min-height: 620px; }
 .hero-logo { position: relative; z-index: 2; display: block; width: min(100%, 560px); height: auto; filter: drop-shadow(0 28px 60px rgba(0,0,0,.5)); animation: float 6s ease-in-out infinite; }
 .orbit { position: absolute; border: 1px solid rgba(72,148,132,.38); border-radius: 50%; }
@@ -200,6 +226,15 @@ a { color: inherit; }
   .hero-deck { font-size: 1rem !important; }
   .hero-actions { width: 100%; }
   .hero-actions .MuiButton-root { width: 100%; }
+  .booking-dialog-paper { margin: 18px !important; box-shadow: 7px 7px 0 var(--orange) !important; }
+  .booking-dialog-title { padding: 25px 60px 10px 22px !important; }
+  .booking-dialog-close { top: 16px; right: 13px; }
+  .booking-dialog-content { padding: 12px 22px 18px !important; }
+  .booking-form-grid { grid-template-columns: 1fr; gap: 16px; }
+  .booking-details-field { grid-column: auto; }
+  .booking-dialog-actions { align-items: stretch !important; flex-direction: column-reverse; padding: 14px 22px 24px !important; }
+  .booking-dialog-actions .MuiButton-root { width: 100%; }
+  .booking-success { padding: 22px !important; }
   .logo-stage { order: 1; min-height: 330px; margin: -10px 0 6px; }
   .section { padding: 82px 0; }
   .section-heading, .split-heading, .empty-show, .footer-main { align-items: flex-start; flex-direction: column; }

@@ -1,15 +1,22 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import Image from 'next/image';
 import {
+  Alert,
   Box,
   Button,
+  CircularProgress,
   Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
   Drawer,
   IconButton,
   Link,
   Stack,
+  TextField,
   Typography,
 } from '@mui/material';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
@@ -25,6 +32,7 @@ import { kitchenVideos } from './kitchen-videos';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const bookingEmailHref = "mailto:hello@nightsoup.ca?subject=Booking%20Night%20Soup&body=Hi%20Night%20Soup%2C%0D%0A%0D%0AI'd%20like%20to%20book%20you%20for%3A%0D%0A%0D%0ADate%3A%0D%0AVenue%3A%0D%0ACity%3A%0D%0A%0D%0AThanks!";
+const bookingFormEndpoint = 'https://formspree.io/f/mdeeppbe';
 
 const navItems = [
   { label: 'Music', href: '#music' },
@@ -90,6 +98,9 @@ const shows: Show[] = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const [bookingStatus, setBookingStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [bookingError, setBookingError] = useState('');
   const [slideIndex, setSlideIndex] = useState(0);
   const [shuffledSlideshowImages, setShuffledSlideshowImages] = useState(() => [...slideshowImages]);
   const [slideshowPlaying, setSlideshowPlaying] = useState(true);
@@ -121,6 +132,51 @@ export default function Home() {
 
   const showNextSlide = () => {
     setSlideIndex((current) => (current + 1) % shuffledSlideshowImages.length);
+  };
+
+  const openBookingForm = () => {
+    setBookingStatus('idle');
+    setBookingError('');
+    setBookingOpen(true);
+  };
+
+  const closeBookingForm = () => {
+    if (bookingStatus === 'submitting') return;
+    setBookingOpen(false);
+  };
+
+  const submitBookingForm = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setBookingStatus('submitting');
+    setBookingError('');
+
+    const form = event.currentTarget;
+
+    try {
+      const response = await fetch(bookingFormEndpoint, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (!response.ok) {
+        const responseBody = await response.json().catch(() => null) as {
+          errors?: Array<{ message?: string }>;
+        } | null;
+        const message = responseBody?.errors
+          ?.map((error) => error.message)
+          .filter(Boolean)
+          .join(' ');
+
+        throw new Error(message || 'We could not send your request. Please try again.');
+      }
+
+      form.reset();
+      setBookingStatus('success');
+    } catch (error) {
+      setBookingStatus('idle');
+      setBookingError(error instanceof Error ? error.message : 'We could not send your request. Please try again.');
+    }
   };
 
   return (
@@ -179,14 +235,14 @@ export default function Home() {
               <Button variant="outlined" href="#shows">Live dates</Button>
               <Button
                 variant="outlined"
-                href={bookingEmailHref}
+                onClick={openBookingForm}
                 startIcon={<MailOutlineRoundedIcon />}
                 className="booking-button"
               >
                 Book Night Soup
               </Button>
             </Stack>
-              <Typography sx= {{mt:2}} className="hero-deck"> or email hello@nightcoup.ca to book</Typography>
+              <Typography sx={{ mt: 2 }} className="hero-deck">or email hello@nightsoup.ca to book</Typography>
           </Box>
           <Box className="logo-stage">
             <div className="orbit orbit-one" />
@@ -205,6 +261,122 @@ export default function Home() {
           <div>LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP · LOW LIGHTS · QUIET ROOMS · DEEP CUTS · NIGHT SOUP ·</div>
         </div>
       </Box>
+
+      <Dialog
+        open={bookingOpen}
+        onClose={closeBookingForm}
+        fullWidth
+        maxWidth="sm"
+        aria-labelledby="booking-dialog-title"
+        slotProps={{ paper: { className: 'booking-dialog-paper' } }}
+      >
+        <DialogTitle id="booking-dialog-title" className="booking-dialog-title">
+          Book Night Soup
+          <IconButton
+            aria-label="Close booking form"
+            onClick={closeBookingForm}
+            disabled={bookingStatus === 'submitting'}
+            className="booking-dialog-close"
+          >
+            <CloseRoundedIcon />
+          </IconButton>
+        </DialogTitle>
+
+        {bookingStatus === 'success' ? (
+          <>
+            <DialogContent className="booking-success">
+              <Typography component="h3">Your request is simmering.</Typography>
+              <Typography>
+                Thanks for thinking of Night Soup. We&apos;ll get back to you at the email address you provided.
+              </Typography>
+            </DialogContent>
+            <DialogActions className="booking-dialog-actions">
+              <Button variant="contained" onClick={closeBookingForm}>Done</Button>
+            </DialogActions>
+          </>
+        ) : (
+          <Box component="form" onSubmit={submitBookingForm} className="booking-form">
+            <DialogContent className="booking-dialog-content">
+              <Typography className="booking-dialog-intro">
+                Tell us a little about the night you&apos;re planning. We&apos;ll follow up by email.
+              </Typography>
+
+              {bookingError && <Alert severity="error">{bookingError}</Alert>}
+
+              <input type="hidden" name="_subject" value="New Night Soup booking request" />
+              <input type="hidden" name="source" value="nightsoup.ca booking form" />
+
+              <Box className="booking-form-grid">
+                <TextField
+                  label="Your name"
+                  name="name"
+                  autoComplete="name"
+                  required
+                  fullWidth
+                />
+                <TextField
+                  label="Email address"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  fullWidth
+                />
+                <TextField
+                  label="Phone (optional)"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  fullWidth
+                />
+                <TextField
+                  label="Event date"
+                  name="event_date"
+                  type="date"
+                  required
+                  fullWidth
+                  slotProps={{ inputLabel: { shrink: true } }}
+                />
+                <TextField
+                  label="Venue or event name"
+                  name="venue"
+                  required
+                  fullWidth
+                />
+                <TextField
+                  label="City / location"
+                  name="location"
+                  autoComplete="address-level2"
+                  required
+                  fullWidth
+                />
+                <TextField
+                  label="Tell us about the event"
+                  name="details"
+                  multiline
+                  minRows={4}
+                  fullWidth
+                  className="booking-details-field"
+                  placeholder="Event type, timing, audience size, or anything else we should know."
+                />
+              </Box>
+            </DialogContent>
+            <DialogActions className="booking-dialog-actions">
+              <Typography>
+                Prefer email? <Link href={bookingEmailHref}>hello@nightsoup.ca</Link>
+              </Typography>
+              <Button
+                type="submit"
+                variant="contained"
+                disabled={bookingStatus === 'submitting'}
+                startIcon={bookingStatus === 'submitting' ? <CircularProgress size={18} color="inherit" /> : <MailOutlineRoundedIcon />}
+              >
+                {bookingStatus === 'submitting' ? 'Sending…' : 'Send request'}
+              </Button>
+            </DialogActions>
+          </Box>
+        )}
+      </Dialog>
 
       <Box component="section" id="music" className="section music-section">
         <Container maxWidth="xl">
