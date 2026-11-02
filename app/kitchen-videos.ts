@@ -15,8 +15,20 @@ export const kitchenVideos: KitchenVideo[] = [
     youtubeUrl: 'https://youtu.be/bBzc9i-CutE?si=EAgNj238s7Sxu_he',
   },
 
-      {
+  {
     displayName: 'Wake Up, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/i6keDWkE1_w?si=pcsvlKrhVINPdgs5',
+  },
+  {
+    displayName: 'Hungry Like The Wolf, live at the Dirty Duck for our Halloween set',
+    youtubeUrl: 'https://youtu.be/T7e1B3VvTRQ?si=1tKAnhTRfRQKRD3M',
+  },
+  {
+    displayName: 'Eat My Brain, live at the Dirty Duck for our Halloween set',
+    youtubeUrl: 'https://youtu.be/_w479qI9Hd4?si=UAJzXTkobOKpMiRc',
+  },
+    {
+    displayName: 'Stuck in the Middle With You, live at the Dirty Duck for our Halloween set',
+    youtubeUrl: 'https://youtu.be/65a_d000jDI?si=KdcxR-gvTUJJK4--',
   },
 ];
