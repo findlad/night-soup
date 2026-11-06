@@ -520,7 +520,7 @@ export default function Home() {
             <Typography>
               Evan Rothery. Duncan Findlay. Guest ingredients. Mostly acoustic. Songs you have forgotten that you love. Innovative covers. Artful selections. Original tunes. Play along. Sing along. Drum along.
             </Typography>
-            <div className="ingredient-line"><span /> Best served quiet</div>
+            <div className="ingredient-line"><span /> Best served.......everywhere</div>
           </Box>
         </Container>
       </Box>
