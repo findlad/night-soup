@@ -100,13 +100,16 @@ a { color: inherit; }
 .soon-button { align-self: flex-start; margin-top: 30px !important; }
 .soon-button.Mui-disabled { color: rgba(7,9,8,.6) !important; background: rgba(252,229,186,.7) !important; }
 .kitchen-video-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(300px, .55fr); min-height: 540px; background: var(--teal); color: var(--cream); box-shadow: 18px 18px 0 var(--orange); }
-.kitchen-player-column { min-width: 0; display: flex; flex-direction: column; }
-.kitchen-player { position: relative; aspect-ratio: 16 / 9; min-height: 0; overflow: hidden; background: #020302; }
+.kitchen-player-column { min-width: 0; display: contents; }
+.kitchen-player { position: relative; grid-column: 1; grid-row: 1; aspect-ratio: 16 / 9; min-height: 0; overflow: hidden; background: #020302; }
 .kitchen-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.kitchen-now-playing { flex: 1; padding: 28px 34px 34px; background: var(--ink); }
+.kitchen-now-playing { grid-column: 1 / -1; grid-row: 2; padding: 28px 34px 34px; background: var(--ink); }
 .kitchen-now-playing .release-type { color: var(--orange); opacity: 1; }
 .kitchen-now-playing h3 { margin: 10px 0 0; color: var(--cream); font-size: clamp(1.7rem, 3vw, 2.8rem); line-height: 1.05; letter-spacing: -.045em; }
-.kitchen-playlist { border-left: 1px solid rgba(252,229,186,.28); }
+.kitchen-playlist { grid-column: 2; grid-row: 1; height: 0; min-height: 100%; overflow-y: auto; overscroll-behavior: contain; border-left: 1px solid rgba(252,229,186,.28); scrollbar-color: var(--orange) var(--teal); scrollbar-width: thin; }
+.kitchen-playlist::-webkit-scrollbar { width: 10px; }
+.kitchen-playlist::-webkit-scrollbar-track { background: var(--teal); }
+.kitchen-playlist::-webkit-scrollbar-thumb { border: 3px solid var(--teal); border-radius: 999px; background: var(--orange); }
 .kitchen-playlist-label { padding: 25px 26px; border-bottom: 1px solid rgba(252,229,186,.28); color: rgba(252,229,186,.72); font-weight: 800 !important; font-size: .75rem !important; letter-spacing: .16em !important; text-transform: uppercase; }
 .kitchen-video-item { width: 100%; min-height: 96px; display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; column-gap: 10px; padding: 20px 24px; border: 0; border-bottom: 1px solid rgba(252,229,186,.22); background: transparent; color: var(--cream); font: inherit; text-align: left; cursor: pointer; transition: background .2s ease, color .2s ease; }
 .kitchen-video-item:hover { background: rgba(7,9,8,.18); }
@@ -213,7 +216,10 @@ a { color: inherit; }
   .logo-caption { right: 12%; bottom: 6%; }
   .record-card, .about-grid, .kitchen-video-layout { grid-template-columns: 1fr; }
   .record-copy { min-height: 440px; }
-  .kitchen-playlist { border-top: 1px solid rgba(252,229,186,.28); border-left: 0; }
+  .kitchen-player-column { display: flex; flex-direction: column; }
+  .kitchen-player { grid-column: auto; grid-row: auto; }
+  .kitchen-now-playing { grid-column: auto; grid-row: auto; }
+  .kitchen-playlist { grid-column: auto; grid-row: auto; height: auto; min-height: 0; overflow-y: visible; border-top: 1px solid rgba(252,229,186,.28); border-left: 0; }
   .about-copy { padding-top: 0; }
   .slideshow-wrap { grid-template-columns: 1fr; gap: 64px; }
 }
