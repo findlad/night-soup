@@ -27,6 +27,7 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 import { slideshowImages } from './slideshow-images.generated';
 import { kitchenVideos } from './kitchen-videos';
 
@@ -578,11 +579,18 @@ export default function Home() {
                 </Link>
               </Typography>
 
-              {/* When we get socials, they go here
               <Stack direction="row" spacing={1.5}>
-                <IconButton aria-label="Instagram link coming soon" className="social-button"><InstagramIcon /></IconButton>
-                <IconButton aria-label="Music links coming soon" className="social-button"><MusicNoteRoundedIcon /></IconButton>
-              </Stack> */}
+                <IconButton
+                  component="a"
+                  href="https://www.youtube.com/channel/UCyIH2tQpThvU5ABxpELSczg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Night Soup on YouTube (opens in a new tab)"
+                  className="social-button"
+                >
+                  <YouTubeIcon />
+                </IconButton>
+              </Stack>
             </Box>
           </Box>
           <Box className="footer-bottom">
