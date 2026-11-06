@@ -227,7 +227,7 @@ export default function Home() {
               <em>Soup of the Night!</em>
             </Typography>
             <Typography className="hero-deck">
-              Night Soup makes music for the hour when the streetlights hum and everything gets a little less ordinary.
+              Calgary’s mostly acoustic alternative rock duo. Serving up inventive covers, forgotten favourites, and originals. From the ’90s to wherever the night takes us.
             </Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} className="hero-actions">
               <Button variant="contained" href="#music" startIcon={<PlayArrowRoundedIcon />}>
