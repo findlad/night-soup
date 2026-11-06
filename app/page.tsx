@@ -447,6 +447,15 @@ export default function Home() {
               </Box>
             </Box>
           )}
+          <Box className="music-booking-cta">
+            <Button
+              variant="contained"
+              onClick={openBookingForm}
+              startIcon={<MailOutlineRoundedIcon />}
+            >
+              Book Night Soup
+            </Button>
+          </Box>
         </Container>
       </Box>
 

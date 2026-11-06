@@ -120,6 +120,9 @@ a { color: inherit; }
 .kitchen-video-status { align-self: start; margin-top: 9px; display: flex; align-items: center; gap: 5px; opacity: .68; font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .kitchen-video-status svg { width: 16px; height: 16px; }
 .kitchen-video-item.active .kitchen-video-status { opacity: 1; }
+.music-booking-cta { display: flex; justify-content: center; margin-top: 48px; }
+.music-booking-cta .MuiButton-contained { min-width: 210px; background: var(--orange); color: var(--ink); }
+.music-booking-cta .MuiButton-contained:hover { background: #ff713a; }
 
 .about-section { position: relative; background: var(--ink); }
 .about-section::after { content: 'NIGHT / SOUP'; position: absolute; right: -1vw; bottom: 0; color: rgba(62,124,112,.1); font: clamp(4rem, 11vw, 11rem)/.8 var(--font-display); letter-spacing: -.08em; pointer-events: none; }
@@ -250,6 +253,8 @@ a { color: inherit; }
   .record-copy { min-height: 390px; padding: 38px 28px; }
   .kitchen-now-playing { padding: 22px 24px 26px; }
   .kitchen-video-item { min-height: 84px; padding: 17px 20px; }
+  .music-booking-cta { margin-top: 38px; }
+  .music-booking-cta .MuiButton-root { width: 100%; }
   .about-section::after { display: none; }
   .slides { min-height: 390px; aspect-ratio: 4 / 5; box-shadow: 9px 9px 0 var(--teal); }
   .slideshow-heading { left: 22px; bottom: 26px; }
