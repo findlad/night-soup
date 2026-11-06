@@ -230,7 +230,7 @@ export default function Home() {
               <em>Soup of the Night!</em>
             </Typography>
             <Typography className="hero-deck">
-              Calgary’s mostly acoustic alternative rock duo. Serving up inventive covers, forgotten favourites, and originals. From the ’90s to wherever the night takes us.
+              Calgary’s mostly acoustic alternative rock duo. Serving up inventive covers, forgotten favourites, and originals. From the ’90s to midnight.
             </Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} className="hero-actions">
               <Button variant="contained" href="#music" startIcon={<PlayArrowRoundedIcon />}>
