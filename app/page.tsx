@@ -533,8 +533,8 @@ export default function Home() {
             <Typography className="about-lead">
               Night Soup lives where the 90s alternative is stripped down, simmered, and served hot.
             </Typography>
-            <Typography>
-              Evan Rothery. Duncan Findlay. Guest ingredients. Mostly acoustic. Songs you have forgotten that you love. Innovative covers. Artful selections. Original tunes. Play along. Sing along. Drum along.
+            <Typography className="band-details">
+              Evan Rothery. Duncan Findlay. Guitars. Balloons. Guest ingredients. Mostly acoustic. Songs you have forgotten that you love. Innovative covers. Artful selections. Sweet originals. Play along. Sing along. Drum along. Get it on.
             </Typography>
             <div className="ingredient-line"><span /> Best served...everywhere</div>
           </Box>
