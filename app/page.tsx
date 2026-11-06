@@ -27,6 +27,7 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import PauseRoundedIcon from '@mui/icons-material/PauseRounded';
 import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
+import MapRoundedIcon from '@mui/icons-material/MapRounded';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { slideshowImages } from './slideshow-images.generated';
 import { kitchenVideos } from './kitchen-videos';
@@ -85,6 +86,7 @@ type Show = {
   venue: string;
   address: string;
   city: string;
+  url: string;
 };
 
 // Add shows here. Leave the array empty to display the current "quiet—for now" message.
@@ -94,6 +96,7 @@ const shows: Show[] = [
     venue: "Congress Coffee Company",
     address: '215 36 Ave NE #1A, Calgary, AB T2E 2L4',
     city: 'Calgary',
+    url: 'https://www.congresscoffeeshop.com/',
   },
 ];
 
@@ -448,6 +451,10 @@ export default function Home() {
             </Box>
           )}
           <Box className="music-booking-cta">
+            <Typography className="music-booking-copy">
+              <span>Like what you hear?</span>
+              Bring Night Soup to your <em>venue, party, or event.</em>
+            </Typography>
             <Button
               variant="contained"
               onClick={openBookingForm}
@@ -529,7 +536,7 @@ export default function Home() {
             <Typography>
               Evan Rothery. Duncan Findlay. Guest ingredients. Mostly acoustic. Songs you have forgotten that you love. Innovative covers. Artful selections. Original tunes. Play along. Sing along. Drum along.
             </Typography>
-            <div className="ingredient-line"><span /> Best served.......everywhere</div>
+            <div className="ingredient-line"><span /> Best served...everywhere</div>
           </Box>
         </Container>
       </Box>
@@ -549,11 +556,22 @@ export default function Home() {
             <Box className="show-list">
               {shows.map((show) => {
                 const addressId = `show-address-${show.date}-${show.venue}`.replace(/[^a-zA-Z0-9-]/g, '-');
+                const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(show.address)}`;
 
                 return (
                   <Box className="show-row" key={`${show.date}-${show.venue}`}>
                     <Typography className="show-date">{show.date}</Typography>
-                    <Typography component="h3" className="show-venue">{show.venue}</Typography>
+                    <Typography component="h3" className="show-venue">
+                      <Link
+                        href={show.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${show.venue} website (opens in a new tab)`}
+                        className="show-venue-link"
+                      >
+                        {show.venue}
+                      </Link>
+                    </Typography>
                     <Box className="city-wrap">
                       <button type="button" className="show-city" aria-describedby={addressId}>
                         {show.city}
@@ -562,6 +580,17 @@ export default function Home() {
                         {show.address}
                       </span>
                     </Box>
+                    <IconButton
+                      component="a"
+                      href={mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${show.venue} in Google Maps (opens in a new tab)`}
+                      title="Open in Google Maps"
+                      className="show-map-link"
+                    >
+                      <MapRoundedIcon />
+                    </IconButton>
                   </Box>
                 );
               })}
