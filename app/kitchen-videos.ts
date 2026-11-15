@@ -18,6 +18,14 @@ export const kitchenVideos: KitchenVideo[] = [
     displayName: 'When I Grow Up (original), live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/RU1N_kVOwx0',
   },
+    {
+    displayName: 'Man Who Sold The World, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/RzGzSAe05F4',
+  },
+    {
+    displayName: 'Wake Up, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/i6keDWkE1_w',
+  },
   {
     displayName: 'Hungry Like The Wolf, live at the Dirty Duck for our Halloween set',
     youtubeUrl: 'https://youtu.be/T7e1B3VvTRQ',
@@ -34,18 +42,12 @@ export const kitchenVideos: KitchenVideo[] = [
     displayName: 'Hello Timebomb, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/jaufVrclmHw',
   },
-  {
-    displayName: 'Man Who Sold The World, live at the Dirty Duck',
-    youtubeUrl: 'https://youtu.be/RzGzSAe05F4',
-  },
+
     {
     displayName: 'Eat My Brain, live at the Dirty Duck for our Halloween set',
     youtubeUrl: 'https://youtu.be/_w479qI9Hd4',
   },
-  {
-    displayName: 'Wake Up, live at the Dirty Duck',
-    youtubeUrl: 'https://youtu.be/i6keDWkE1_w',
-  },
+
   {
     displayName: 'Stuck in the Middle With You, live at the Dirty Duck for our Halloween set',
     youtubeUrl: 'https://youtu.be/65a_d000jDI',
