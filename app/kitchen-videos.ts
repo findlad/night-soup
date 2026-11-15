@@ -14,9 +14,17 @@ export const kitchenVideos: KitchenVideo[] = [
     displayName: 'Nothing`s Ever Easy, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/LG-Gk_BPZ4o',
   },
+    {
+    displayName: 'When I Grow Up (original), live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/RU1N_kVOwx0',
+  },
   {
     displayName: 'Hungry Like The Wolf, live at the Dirty Duck for our Halloween set',
     youtubeUrl: 'https://youtu.be/T7e1B3VvTRQ',
+  },
+    {
+    displayName: 'Mary On A Cross, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/KNOHuSoXvLM',
   },
   {
     displayName: 'All Apologies, live at the Dirty Duck',
@@ -27,6 +35,10 @@ export const kitchenVideos: KitchenVideo[] = [
     youtubeUrl: 'https://youtu.be/jaufVrclmHw',
   },
   {
+    displayName: 'Man Who Sold The World, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/RzGzSAe05F4',
+  },
+    {
     displayName: 'Eat My Brain, live at the Dirty Duck for our Halloween set',
     youtubeUrl: 'https://youtu.be/_w479qI9Hd4',
   },
