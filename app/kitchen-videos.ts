@@ -11,7 +11,7 @@ export const kitchenVideos: KitchenVideo[] = [
     youtubeUrl: 'https://youtu.be/bBzc9i-CutE',
   },
   {
-    displayName: 'Nothing`s Ever Easy, live at the Dirty Duck',
+    displayName: 'Nothing`s Ever Easy (original), live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/LG-Gk_BPZ4o',
   },
     {
