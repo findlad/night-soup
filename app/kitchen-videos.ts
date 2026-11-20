@@ -10,6 +10,10 @@ export const kitchenVideos: KitchenVideo[] = [
     displayName: 'Cherub Rock, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/bBzc9i-CutE',
   },
+      {
+    displayName: 'Old Mens Wars, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/qyzMRj2PjIc',
+  },
   {
     displayName: 'Nothing`s Ever Easy (original), live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/LG-Gk_BPZ4o',
@@ -23,10 +27,7 @@ export const kitchenVideos: KitchenVideo[] = [
     youtubeUrl: 'https://youtu.be/RzGzSAe05F4',
   },
 
-    {
-    displayName: 'Old Mens Wars, live at the Dirty Duck',
-    youtubeUrl: 'https://youtu.be/qyzMRj2PjIc',
-  },
+
   {
     displayName: 'Flagpole Sitta, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/SjScSPzmbf4',
