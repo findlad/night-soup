@@ -22,6 +22,20 @@ export const kitchenVideos: KitchenVideo[] = [
     displayName: 'Man Who Sold The World, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/RzGzSAe05F4',
   },
+
+    {
+    displayName: 'Old Mens Wars, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/qyzMRj2PjIc',
+  },
+  {
+    displayName: 'Flagpole Sitta, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/SjScSPzmbf4',
+  },
+    {
+    displayName: 'Ahead By A Century, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/keJveBlBBsY',
+  },
+
     {
     displayName: 'Wake Up, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/i6keDWkE1_w',
