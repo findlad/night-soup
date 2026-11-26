@@ -22,11 +22,14 @@ export const kitchenVideos: KitchenVideo[] = [
     displayName: 'When I Grow Up (original), live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/RU1N_kVOwx0',
   },
+  //   {
+  //   displayName: 'Verse Chorus Verse (original), live at the Dirty Duck',
+  //   youtubeUrl: 'https://youtu.be/RzGzSAe05F4',
+  // },
     {
     displayName: 'Man Who Sold The World, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/RzGzSAe05F4',
   },
-
 
   {
     displayName: 'Flagpole Sitta, live at the Dirty Duck',
@@ -36,7 +39,10 @@ export const kitchenVideos: KitchenVideo[] = [
     displayName: 'Ahead By A Century, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/keJveBlBBsY',
   },
-
+    {
+    displayName: 'Ashes to Ashes, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/JAAF6SCWB-g',
+  },
     {
     displayName: 'Wake Up, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/i6keDWkE1_w',
@@ -44,6 +50,10 @@ export const kitchenVideos: KitchenVideo[] = [
   {
     displayName: 'Hungry Like The Wolf, live at the Dirty Duck for our Halloween set',
     youtubeUrl: 'https://youtu.be/T7e1B3VvTRQ',
+  },
+      {
+    displayName: '1979, live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/GfcuWD4t4gA',
   },
     {
     displayName: 'Mary On A Cross, live at the Dirty Duck',
