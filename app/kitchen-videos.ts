@@ -22,10 +22,10 @@ export const kitchenVideos: KitchenVideo[] = [
     displayName: 'When I Grow Up (original), live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/RU1N_kVOwx0',
   },
-  //   {
-  //   displayName: 'Verse Chorus Verse (original), live at the Dirty Duck',
-  //   youtubeUrl: 'https://youtu.be/RzGzSAe05F4',
-  // },
+    {
+    displayName: 'Verse Chorus Verse (original), live at the Dirty Duck',
+    youtubeUrl: 'https://youtu.be/aSDfAdiXmtI',
+  },
     {
     displayName: 'Man Who Sold The World, live at the Dirty Duck',
     youtubeUrl: 'https://youtu.be/RzGzSAe05F4',
